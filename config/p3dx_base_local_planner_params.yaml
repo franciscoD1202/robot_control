@@ -1,4 +1,4 @@
- controller_frecuency: 3.0
+controller_frecuency: 3.0
  TrajectoryPlannerROS:
 
 # Robot Configuration Parameters
@@ -52,6 +52,3 @@
 
 path_distance_bias: 0.6
 goal_distance_bias: 0.6
-
-
-
