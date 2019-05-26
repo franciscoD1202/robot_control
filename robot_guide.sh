@@ -14,3 +14,5 @@ export ROS_MASTER_URI=http://157.253.207.241:11311
 
 echo "Set up completed"
 echo "Launching ROBOT GUIDE"
+
+roslaunch robot_control robot_config_test.launch
