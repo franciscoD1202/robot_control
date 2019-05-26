@@ -1,4 +1,4 @@
- controller_frecuency: 3.0
+ controller_frecuency: 5.0
  TrajectoryPlannerROS:
 
 # Robot Configuration Parameters
@@ -22,7 +22,7 @@
   xy_goal_tolerance: 0.8
 
 #Forward Simulation Parameters
-  sim_time: 2.0
+  sim_time: 1.0
   sim_granularity: 0.025
   angular_sim_granularity: 0.025
   vx_samples: 5
@@ -32,7 +32,7 @@
 
 #Trajectory Scoring Parameters
   meter_scoring: true
-  pdist_scale: 1.80
+  pdist_scale: 2.60
   gdist_scale: 0.80
   occdist_scale: 0.06
   heading_lookahead: 1.0
