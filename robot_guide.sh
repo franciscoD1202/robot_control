@@ -1,5 +1,6 @@
 #!/bin/bash
 clear
+systemctl start vncserver-x11-serviced.service D
 echo "Start..." 
 source /opt/ros/kinetic/setup.bash
 . /home/francisco/catkin_ws/devel/setup.bash
