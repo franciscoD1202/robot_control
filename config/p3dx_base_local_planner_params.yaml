@@ -1,4 +1,4 @@
- controller_frecuency: 5.0
+ controller_frecuency: 3.0
  TrajectoryPlannerROS:
 
 # Robot Configuration Parameters
@@ -18,11 +18,11 @@
   holonomic_robot: false
 
 #Goal Tolerance Parameters
-  yaw_goal_tolerance: 0.8
-  xy_goal_tolerance: 0.8
+  yaw_goal_tolerance: 0.2
+  xy_goal_tolerance: 0.2
 
 #Forward Simulation Parameters
-  sim_time: 1.0
+  sim_time: 2.0
   sim_granularity: 0.025
   angular_sim_granularity: 0.025
   vx_samples: 5

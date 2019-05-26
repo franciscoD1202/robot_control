@@ -12,5 +12,5 @@ min_obstacle_height: 0.0
 transform_tolerance: 0.1
 observation_sources: laser_scan sonar
 
-laser_scan: {sensor_frame: /laser_frame,  data_type: LaserScan,  topic: /RosAria/urg_1_laserscan, marking: false, clearing: true, expected_update_rate: 0.0}
+laser_scan: {sensor_frame: /laser_frame,  data_type: LaserScan,  topic: /RosAria/urg_1_laserscan, marking: false, clearing: true, expected_update_rate: 0.1}
 sonar: {data_type: PointCloud, topic: /RosAria/sonar, marking: true, clearing: false, min_obstacle_height: 0.0, max_obstacle_height: 0.20}
