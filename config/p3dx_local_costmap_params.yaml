@@ -11,4 +11,4 @@ local_costmap:
   width: 4.0
   height: 4.0
   resolution: 0.025
-  transform_tolerance: 0.1
+  transform_tolerance: 1.0
