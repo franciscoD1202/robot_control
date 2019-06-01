@@ -205,5 +205,5 @@ include_directories(
 
 add_executable(robot_control src/robot_control.cpp)
 target_link_libraries(robot_control ${catkin_LIBRARIES})
-add_executable(p3dx_traveled_dist src/p3dx_traveled_dist.cpp)
-target_link_libraries(p3dx_traveled_dist ${catkin_LIBRARIES})
+add_executable(p3dx_travelled_dist src/p3dx_travelled_dist.cpp)
+target_link_libraries(p3dx_travelled_dist ${catkin_LIBRARIES})
