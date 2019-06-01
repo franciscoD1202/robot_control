@@ -5,34 +5,76 @@
 #include <nav_msgs/Odometry.h>
 #include <math.h>
 
-extern float x_ant, x_act, y_ant, y_act;
-
-
-void chatterCallback(const nav_msgs::Odometry::ConstPtr& msg)
+float x_ant, y_ant, x_act, y_act, dist;
+// Global variable declaration
+class p3dx_travelled_dist
 {
-    float x_ant = 0.0, y_ant = 0.0, x_act, y_act;
+private:
+  float d_0;
 
+public:
 
-        ROS_INFO("Seq: [%d]", msg->header.seq);
-        ROS_INFO("Position-> x: [%f], y: [%f]", msg->pose.pose.position.x,msg->pose.pose.position.y);
-        ROS_INFO("Orientation-> z: [%f], w: [%f]", msg->pose.pose.orientation.z, msg->pose.pose.orientation.w);
-        ROS_INFO("Travelled Dist-> Linear: [%f], Angular: [%f]", msg->twist.twist.linear.x,msg->twist.twist.angular.z);
+  void set_intial_dist(float d)
+  {
+    d_0 = d;
+  }
+  float get_initial_dist(void)
+  {
+    return d_0;
+  }
+};
+
+float distance(float x_an,float x_ac, float y_an, float y_ac)
+{
+    float d_x, d_y;
+
+    d_x = x_an-x_ac;
+
+    d_y = y_an-y_ac;
+
+    float distance;
+    distance = sqrt((d_x*d_x)+(d_y*d_y));
+
+    return distance;
+}
+
+void chatterCallback(const nav_msgs::Odometry::ConstPtr msg)
+{
+  float temp_x, temp_y;
+    int i;
+
+    for (i; i<1; i++)
+    {
+        x_ant = msg->pose.pose.position.x;
+        y_ant = msg->pose.pose.position.y;
+        dist = 0;
+    }
+
+    x_act = msg->pose.pose.position.x;
+    y_act = msg->pose.pose.position.y;
+
+    dist += distance(x_ant,x_act,y_ant,y_act);
+
+  //ROS_INFO("Seq: [%d]", msg->header.seq);
+
+    ROS_INFO("Distancia Recorrida: [%f] m", dist);
+
+    temp_x = x_ant;
+    temp_y = y_ant;
+
+    x_ant = x_act;
+    y_ant = y_act;
 }
 
 int main(int argc, char **argv)
 {
-        ros::init(argc, argv, "p3dx_traveled_dist");
-        ros::NodeHandle n;
 
-        ros::Subscriber sub = n.subscribe("/RosAria/pose",1000, chatterCallback);
 
-        ros::spin();
-        return 0;
-}
+    float dist = 0;
+    ros::init(argc, argv, "p3dx_traveled_dist");
+    ros::NodeHandle n;
+    ros::Subscriber sub = n.subscribe("/RosAria/pose",1000, chatterCallback);
+    ros::spin();
 
-float distance(float x_ant,float x_act, float y_ant, float y_act)
-{
-    float dist = sqrt((pow((x_ant-x_act),2.0))+(pow((y_ant-y_act),2.0)));
-
-    return dist;
+    return 0;
 }
